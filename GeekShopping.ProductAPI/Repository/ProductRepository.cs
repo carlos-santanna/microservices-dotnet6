@@ -8,13 +8,13 @@ namespace GeekShopping.ProductAPI.Repository
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly SqlServercontext _context;
+        private readonly DbGeekShoppingContext _context;
         private IMapper _mapper;
         
 
-        public ProductRepository(SqlServercontext sqlServerContext, IMapper mapper)
+        public ProductRepository(DbGeekShoppingContext dBGeekShoppingContext, IMapper mapper)
         {
-            _context = sqlServerContext;
+            _context = dBGeekShoppingContext;
             _mapper = mapper;
         }
 
