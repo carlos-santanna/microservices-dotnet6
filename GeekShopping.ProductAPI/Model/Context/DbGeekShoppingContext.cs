@@ -2,11 +2,11 @@
 
 namespace GeekShopping.ProductAPI.Model.Context
 {
-    public class SqlServercontext: DbContext
+    public class DbGeekShoppingContext: DbContext
     {
-        public SqlServercontext(){}
+        public DbGeekShoppingContext(){}
 
-        public SqlServercontext(DbContextOptions<SqlServercontext> options): base(options) { }
+        public DbGeekShoppingContext(DbContextOptions<DbGeekShoppingContext> options): base(options) { }
 
         public DbSet<Product> Products { get; set; }
         

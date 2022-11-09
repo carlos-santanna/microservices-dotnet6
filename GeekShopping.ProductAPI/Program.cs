@@ -14,9 +14,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var connectionString = builder.Configuration.GetConnectionString("DB");
-builder.Services.AddDbContext<SqlServercontext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<DbGeekShoppingContext>(options => options.UseSqlite(connectionString));
 
-//convert um VO (value objet) para objeto e o inverso, de Objeto para VO - isso é importante para não expor o banco de dados
+//convert um VO (value objet) para objeto e o inverso, de Objeto para VO - isso ï¿½ importante para nï¿½o expor o banco de dados
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -29,7 +29,12 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(
+        // c => {
+        //     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Geek API V1");
+        //     c.RoutePrefix = string.Empty;
+        // }
+    );
 }
 
 app.UseAuthorization();
